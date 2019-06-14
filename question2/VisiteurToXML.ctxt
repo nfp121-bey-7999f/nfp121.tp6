@@ -1,7 +1,8 @@
 #BlueJ class context
+comment0.params=
 comment0.target=VisiteurToXML()
 comment1.params=c
-comment1.target=Element\ visite(Contributeur)
+comment1.target=org.jdom.Element\ visite(question1.Contributeur)
 comment2.params=g
-comment2.target=Element\ visite(GroupeDeContributeurs)
+comment2.target=org.jdom.Element\ visite(question1.GroupeDeContributeurs)
 numComments=3
