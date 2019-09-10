@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.params=
 comment0.target=IHM()
-comment1.params=ae
+comment1.params=avt
 comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
-comment2.params=ae
+comment2.params=avt
 comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment3.params=
 comment3.target=void\ main()

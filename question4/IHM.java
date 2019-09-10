@@ -1,5 +1,6 @@
+  
 package question4;
-
+import question1.SoldeDebiteurException;
 import question1.Contributeur;
 import question1.GroupeDeContributeurs;
 import question2.*;
@@ -48,31 +49,47 @@ public class IHM extends JFrame {
             resultat.setText(Main.arbreXML(g)); //actualiser();
         }catch(Exception e){}
 
-        debiter.addActionListener(new ActionListener(){ 
-                public void actionPerformed(ActionEvent ae){                             
-                    AbstractTransaction transaction = new TransactionDebit(g); 
-                    try{                             
-                        transaction.debit(Integer.parseInt(somme.getText())); 
-                    }catch(Exception e){} 
-                    try{                             
-                        resultat.setText(Main.arbreXML(g)); 
-                        //actualiser(); 
-                    }catch(Exception e){} 
-                } 
-            }
-        );
+        debiter.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent avt)
+                {
+                    String txt=somme.getText();
+                    if(txt==null||txt.isEmpty())
+                        return ;
+                    int valeur = Integer.valueOf(txt);
+                    if(g!=null)
+                        try
+                        {
+                            g.debit(valeur);
+                            try
+                            {
+                                resultat.setText(Main.arbreXML(g)); //actualiser();
+                            }
+                            catch(Exception e){}
+                        }
+                        catch(SoldeDebiteurException e)
+                        {
+                            System.out.println(e.getMessage());
+                        }   
+                }   
+            }); 
 
-        crediter.addActionListener(new ActionListener(){ 
-                public void actionPerformed(ActionEvent ae){                             
-                    AbstractTransaction transaction = new TransactionDebit(g);                            
-                    g.credit(Integer.parseInt(somme.getText())); 
-                    try{                             
-                        resultat.setText(Main.arbreXML(g)); 
-                        //actualiser(); 
-                    }catch(Exception e){} 
-                } 
-            }
-        );
+        crediter.addActionListener(new ActionListener()
+            {
+                public void actionPerformed(ActionEvent avt)
+                {
+                    String txt=somme.getText();
+                    if(txt==null||txt.isEmpty())
+                        return;
+                    int valeur = Integer.valueOf(txt);
+                    g.credit(valeur);
+                    try
+                    {
+                        resultat.setText(Main.arbreXML(g)); //actualiser();
+                    }
+                    catch(Exception e){}
+                }
+            });
 
         this.pack();
         this.setVisible(true);
@@ -81,5 +98,6 @@ public class IHM extends JFrame {
     public static void main() {
         new IHM();    
     }    
+
 
 }
