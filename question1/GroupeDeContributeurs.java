@@ -12,11 +12,11 @@ public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant
   
   public GroupeDeContributeurs(String nomDuGroupe){
     super(nomDuGroupe);
-  this.liste = new ArrayList<Cotisant>(); 
+    this.liste = new ArrayList<Cotisant>(); 
     } 
   
   public void ajouter(Cotisant cotisant){
-      this.liste.add(cotisant);                             
+        this.liste.add(cotisant);                             
         cotisant.setParent(this); 
     } 
     
@@ -51,7 +51,7 @@ public class GroupeDeContributeurs extends Cotisant implements Iterable<Cotisant
   
   public void debit(int somme) throws SoldeDebiteurException{
     if(somme <  0){ 
-            throw new RuntimeException("nombre négatif "); 
+            throw new RuntimeException("  nombre négatif ! "); 
         } 
         else{
             for(Cotisant c: this.liste){
